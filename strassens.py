@@ -56,7 +56,6 @@ def strassen(A, B):
     P6 = strassen(subtract(b, d), add(g,h))   
     P7 = strassen(subtract(a,c), add(e,f)) 
 
-    # do the necessary additions 
     c11 = add(subtract(add(P5,P4), P2),P6)   
     c12 = add(P1,P2)            
     c21 = add(P3,P4)          
