@@ -104,11 +104,12 @@ if __name__ == "__main__":
     #     print(f"crossover:{crossover_val} - finished in {toc - tic:0.4f} seconds")
 
     #crossover_val = 1
-    dimension = 1
+    dimension = 0
+
     while dimension <= 250:
         dimension += 2
         ##crossover_val = dimension - 1
-        crossover_val = dimension - 1
+        crossover_val = 400
         tic = time.perf_counter()
         a = [ [1]*dimension for i in range(dimension) ]
         product = strassens(a, a, crossover=crossover_val)
