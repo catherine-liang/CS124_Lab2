@@ -4,8 +4,19 @@ import sys
 import time
 
 def matmult(a, b):
-    z_b = list(zip(*b))
-    return [[sum(x * y for x, y in zip(a_row, b_col)) for b_col in z_b] for a_row in a]
+    #z_b = list(zip(*b))
+    #return [[sum(x * y for x, y in zip(a_row, b_col)) for b_col in z_b] for a_row in a]
+# iterate through rows of X
+    result = [ [0]*len(a) for i in range(len(a)) ]
+    for i in range(len(a)):
+       # iterate through columns of Y
+       for j in range(len(b)):
+           # iterate through rows of Y
+           for k in range(len(a)):
+               result[i][j] += a[i][k] * a[k][j]
+    return result
+
+
 
 def matadd(a, b):
     return [[x + y for x, y in zip(col_a, col_b)] for col_a, col_b in zip(a, b)]
@@ -80,17 +91,30 @@ def strassens(a, b, crossover):
 
 
 if __name__ == "__main__":
-    crossover_val = 0
-    while crossover_val <= 130:
+    # crossover_val = 0
+    # while crossover_val <= 120:
 
-        dimension = 499
-        crossover_val += 1
+    #     dimension = 500
+    #     crossover_val += 1
+    #     tic = time.perf_counter()
+    #     a = [ [1]*dimension for i in range(dimension) ]
+    #     product = strassens(a, a, crossover=crossover_val)
+    #     toc = time.perf_counter()
+
+    #     print(f"crossover:{crossover_val} - finished in {toc - tic:0.4f} seconds")
+
+    #crossover_val = 1
+    dimension = 1
+    while dimension <= 250:
+        dimension += 2
+        ##crossover_val = dimension - 1
+        crossover_val = dimension - 1
         tic = time.perf_counter()
         a = [ [1]*dimension for i in range(dimension) ]
         product = strassens(a, a, crossover=crossover_val)
         toc = time.perf_counter()
 
-        print(f"crossover:{crossover_val} - finished in {toc - tic:0.4f} seconds")
+        print(f"{toc - tic:0.4f}")
 
 
   
