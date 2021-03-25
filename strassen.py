@@ -3,14 +3,26 @@ from math import ceil, floor
 import sys
 
 def matmult(a, b):
-    z_b = list(zip(*b))
-    return [[sum(x * y for x, y in zip(a_row, b_col)) for b_col in z_b] for a_row in a]
+    result = [ [0]*len(a) for i in range(len(a)) ]
+    for i in range(len(a)):
+       for j in range(len(b)):
+           for k in range(len(a)):
+               result[i][j] += a[i][k] * b[k][j]
+    return result
 
 def matadd(a, b):
-    return [[x + y for x, y in zip(col_a, col_b)] for col_a, col_b in zip(a, b)]
+    result = [ [0]*len(a) for i in range(len(a)) ]
+    for i in range(len(a)):
+       for j in range(len(b)):
+            result[i][j] += a[i][j] + b[i][j]
+    return result
 
 def matsub(a, b):
-    return [[x - y for x, y in zip(col_a, col_b)] for col_a, col_b in zip(a, b)]
+    result = [ [0]*len(a) for i in range(len(a)) ]
+    for i in range(len(a)):
+       for j in range(len(b)):
+            result[i][j] += a[i][j] - b[i][j]
+    return result
 
 def readfile(filename, d):
     dims = range(d)
